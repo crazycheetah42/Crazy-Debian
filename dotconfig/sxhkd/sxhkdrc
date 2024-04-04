@@ -10,6 +10,9 @@ super + x
 super + r
 	rofi -show drun
 
+super + l
+	betterlockscreen -l
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
