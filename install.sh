@@ -6,10 +6,6 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-# Change Debian to SID Branch
-cp /etc/apt/sources.list /etc/apt/sources.list.bak
-cp sources.list /etc/apt/sources.list
-
 username=$(id -u -n 1000)
 builddir=$(pwd)
 
@@ -25,20 +21,17 @@ cd $builddir
 mkdir -p /home/$username/.config
 mkdir -p /home/$username/.fonts
 mkdir -p /home/$username/Pictures
-mkdir -p /usr/share/sddm/themes
 cp .Xresources /home/$username
 cp .Xnord /home/$username
 cp -R dotconfig/* /home/$username/.config/
 cp bg.jpg /home/$username/Pictures/
 mv user-dirs.dirs /home/$username/.config
 chown -R $username:$username /home/$username
-tar -xzvf sugar-candy.tar.gz -C /usr/share/sddm/themes
-mv /home/$username/.config/sddm.conf /etc/sddm.conf
 
 # Installing Essential Programs 
 nala install feh bspwm sxhkd kitty rofi polybar picom thunar lxpolkit x11-xserver-utils unzip wget pulseaudio pavucontrol -y
 # Installing Other less important Programs
-nala install neofetch psmisc virt-manager remmina pitivi lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
+nala install neofetch flameshot psmisc virt-manager remmina pitivi lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
 
 # Download Nordic Theme
 cd /usr/share/themes/

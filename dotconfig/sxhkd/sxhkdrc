@@ -22,10 +22,10 @@ super + b
 	brave-browser
 
 super + p 
-	flameshot full -p /home/titus/SynologyDrive/Screenshots/
+	flameshot full -p ~/Pictures/Screenshots/
 
 super + shift + p
-	flameshot gui -p /home/titus/SynologyDrive/Screenshots/
+	flameshot gui -p ~/Pictures/Screenshots/
 
 #
 # bspwm hotkeys
