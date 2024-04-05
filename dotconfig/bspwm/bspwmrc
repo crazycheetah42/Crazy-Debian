@@ -62,8 +62,6 @@ bspc rule -a Brave-browser desktop='^1' follow=on
 
 bspc rule -a wine desktop='^7' state=floating follow=on
 
-bspc rule -a yad state=floating follow=on
-
 bspc rule -a variety state=floating
 
 bspc rule -a virt-manager desktop='^2'
