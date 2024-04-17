@@ -34,10 +34,10 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 #BSPWM Config
 bspc config border_width        0
-bspc config top_padding         35
-bspc config right_padding       2
-bspc config left_padding        2
-bspc config bottom_padding      2
+bspc config top_padding         31
+bspc config right_padding       1
+bspc config left_padding        1
+bspc config bottom_padding      1
 bspc config window_gap          2
 bspc config top_monocle_padding  0
 bspc config right_monocle_padding 0
@@ -67,9 +67,11 @@ bspc rule -a variety state=floating
 bspc rule -a virt-manager desktop='^2'
 
 bspc rule -a code desktop='^4'
+
+
 #Auto-Start
 bspc desktop -f ^1
 sleep 0.50
-compton --config ~/.config/compton.conf --backend glx
+picom &
 bspc desktop -f ^1
 
