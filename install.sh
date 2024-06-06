@@ -6,23 +6,11 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-username=$(id -u -n 1000)
-builddir=$(pwd)
-
 # Update packages list and update system
 apt update
 apt upgrade -y
 
-# Install nala
-apt install nala -y
 
-# Making .config and Moving config files and background to Pictures
-cd $builddir
-mkdir -p /home/$username/.config
-mkdir -p /home/$username/.fonts
-mkdir -p /home/$username/Pictures
-cp .Xresources /home/$username
-cp .Xnord /home/$username
 cp -R dotconfig/* /home/$username/.config/
 cp bg.jpg /home/$username/Pictures/
 mv user-dirs.dirs /home/$username/.config
