@@ -10,6 +10,8 @@ fi
 apt update
 apt upgrade -y
 
+apt install nala -y
+
 
 cp -R dotconfig/* /home/$username/.config/
 cp bg.jpg /home/$username/Pictures/
