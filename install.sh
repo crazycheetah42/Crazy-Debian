@@ -10,8 +10,6 @@ fi
 apt update
 apt upgrade -y
 
-apt install nala -y
-
 
 cp -R dotconfig/* /home/$username/.config/
 cp bg.jpg /home/$username/Pictures/
@@ -19,10 +17,10 @@ mv user-dirs.dirs /home/$username/.config
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-nala install feh bspwm sxhkd kitty rofi polybar compton thunar lxpolkit x11-xserver-utils unzip wget pulseaudio pavucontrol -y
+apt install feh bspwm sxhkd kitty rofi polybar compton thunar lxpolkit x11-xserver-utils unzip wget build-essential pulseaudio pavucontrol -y
 # Installing Other less important Programs
-nala install neofetch flameshot psmisc virt-manager remmina pitivi lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
-sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
+apt install neofetch flameshot psmisc virt-manager lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
+sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libxss1 libappindicator1 libindicator7 libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -30,7 +28,7 @@ git clone https://github.com/EliverLara/Nordic.git
 
 # Installing fonts
 cd $builddir 
-nala install fonts-font-awesome
+apt install fonts-font-awesome -y
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip FiraCode.zip -d /home/$username/.fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
@@ -50,12 +48,9 @@ cd Nordzy-cursors
 cd $builddir
 rm -rf Nordzy-cursors
 
-# Install brave-browser
-nala install apt-transport-https curl -y
-curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
-nala update
-nala install brave-browser -y
+# Install Chrome browser
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y
 
 # Enable graphical login and change target from CLI to GUI
 systemctl enable lightdm
@@ -71,4 +66,12 @@ mv background.jpg ~/Pictures/
 betterlockscreen -u "~/Pictures/background.jpg"
 
 # Polybar configuration
+cd $builddir
 bash scripts/changeinterface
+
+# CTT mybash for a pretty terminal
+git clone https://github.com/ChrisTitusTech/mybash.git
+cd mybash
+./setup.sh
+
+reboot
