@@ -12,7 +12,7 @@ apt full-upgrade -y
 
 
 cp -r dotconfig/* /home/$username/.config/
-cp bg.jpg /home/$username/Pictures/
+cp background.jpg /home/$username/Pictures/background.jpg
 mv user-dirs.dirs /home/$username/.config
 chown -R $username:$username /home/$username
 
@@ -24,6 +24,15 @@ apt install autoconf imagemagick bc pkg-config libpam0g-dev libcairo2-dev libxss
 # Install Chrome browser
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb -y
+
+# Set up betterlockscreen for a lock screen
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+./install-i3lock-color.sh
+cd $builddir
+rm -rf i3lock-color
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+betterlockscreen -u ~/Pictures/background.jpg
 
 # Download Nordic Theme and Nordzy cursor
 cd /usr/share/themes/
@@ -47,15 +56,6 @@ chown $username:$username /home/$username/.fonts/*
 fc-cache -vf
 rm ./FiraCode.zip ./Meslo.zip
 
-
-# Set up betterlockscreen for a lock screen
-git clone https://github.com/Raymo111/i3lock-color.git
-cd i3lock-color
-./install-i3lock-color.sh
-cd $builddir
-rm -rf i3lock-color
-wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
-betterlockscreen -u ~/Pictures/background.jpg
 
 # Enable graphical login and change target from CLI to GUI
 systemctl enable lightdm
