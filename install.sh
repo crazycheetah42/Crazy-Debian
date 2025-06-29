@@ -8,19 +8,20 @@ fi
 
 # Update packages list and update system
 apt update
-apt upgrade -y
+apt full-upgrade -y
 
 
-cp -R dotconfig/* /home/$username/.config/
+cp -r dotconfig/* /home/$username/.config/
 cp bg.jpg /home/$username/Pictures/
 mv user-dirs.dirs /home/$username/.config
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-apt install feh bspwm sxhkd kitty rofi polybar compton thunar lxpolkit x11-xserver-utils unzip wget build-essential pulseaudio pavucontrol -y
+apt install feh bspwm betterlockscreen sxhkd kitty rofi polybar picom thunar lxpolkit x11-xserver-utils unzip wget curl build-essential pulseaudio pavucontrol -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc virt-manager lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
-sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libxss1 libappindicator1 libindicator7 libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
+apt install neofetch flameshot psmisc lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
+apt install autoconf imagemagick bc pkg-config libpam0g-dev libcairo2-dev libxss1 libappindicator1 libindicator7 libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev libgif-dev -y
+
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -52,26 +53,21 @@ rm -rf Nordzy-cursors
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb -y
 
-# Enable graphical login and change target from CLI to GUI
-systemctl enable lightdm
-systemctl set-default graphical.target
-
+# Set up betterlockscreen for a lock screen
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
-cd ..
-rm -r i3lock-color
+cd $builddir
+rm -rf i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
-mv background.jpg ~/Pictures/
-betterlockscreen -u "~/Pictures/background.jpg"
+
+# Enable graphical login and change target from CLI to GUI
+systemctl enable lightdm
+systemctl set-default graphical.target
 
 # Polybar configuration
 cd $builddir
 bash scripts/changeinterface
 
-# CTT mybash for a pretty terminal
-git clone https://github.com/ChrisTitusTech/mybash.git
-cd mybash
-./setup.sh
 
 reboot

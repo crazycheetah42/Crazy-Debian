@@ -5,8 +5,6 @@
 # terminal emulator
 super + t
 	kitty 
-super + w
-	remmina -c ~/.local/share/remmina/group_rdp_windows11_192-168-86-99-3389.remmina
 # program launcher
 super + r
 	rofi -show drun
@@ -20,13 +18,13 @@ super + Escape
 
 # My program Hotkeys
 super + b
-	brave-browser
+	google-chrome
 
 super + p 
-	flameshot full -p /media/Aryaman/Pictures/Screenshots/
+	flameshot full -p "$(xdg-user-dir PICTURES)/Screenshots/"
 
 super + shift + p
-	flameshot gui -p /media/Aryaman/Pictures/Screenshots/
+	flameshot gui -p "$(xdg-user-dir PICTURES)/Screenshots/"
 
 #
 # bspwm hotkeys
