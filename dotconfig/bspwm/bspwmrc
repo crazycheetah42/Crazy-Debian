@@ -21,11 +21,11 @@ while :; do
     sleep 5
 done &
 
-#Fix Mouse curoor on startup 
+#Fix Mouse cursor on startup 
 xsetroot -cursor_name left_ptr
 
-# Set sleep settings
-xset dpms 180 600 &
+# Set display settings
+xset dpms 0 0 180 &
 
 # Polkit Agent
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
