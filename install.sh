@@ -60,6 +60,7 @@ cd i3lock-color
 cd $builddir
 rm -rf i3lock-color
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+betterlockscreen -u ~/Pictures/background.jpg
 
 # Enable graphical login and change target from CLI to GUI
 systemctl enable lightdm
