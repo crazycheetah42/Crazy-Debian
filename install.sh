@@ -21,13 +21,21 @@ apt install feh bspwm betterlockscreen sxhkd kitty rofi polybar picom thunar lxp
 # Installing Other less important Programs
 apt install neofetch flameshot psmisc lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
 apt install autoconf imagemagick bc pkg-config libpam0g-dev libcairo2-dev libxss1 libappindicator1 libindicator7 libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev libgif-dev -y
+# Install Chrome browser
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y
 
-
-# Download Nordic Theme
+# Download Nordic Theme and Nordzy cursor
 cd /usr/share/themes/
 git clone https://github.com/EliverLara/Nordic.git
+cd $builddir
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Nordzy-cursors
+./install.sh
+cd $builddir
+rm -rf Nordzy-cursors
 
-# Installing fonts
+# Installing and setting up fonts
 cd $builddir 
 apt install fonts-font-awesome -y
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
@@ -36,22 +44,9 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
 unzip Meslo.zip -d /home/$username/.fonts
 mv dotfonts/fontawesome/otfs/*.otf /home/$username/.fonts/
 chown $username:$username /home/$username/.fonts/*
-
-# Reloading Font
 fc-cache -vf
-# Removing zip Files
 rm ./FiraCode.zip ./Meslo.zip
 
-# Install Nordzy cursor
-git clone https://github.com/alvatip/Nordzy-cursors
-cd Nordzy-cursors
-./install.sh
-cd $builddir
-rm -rf Nordzy-cursors
-
-# Install Chrome browser
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb -y
 
 # Set up betterlockscreen for a lock screen
 git clone https://github.com/Raymo111/i3lock-color.git
