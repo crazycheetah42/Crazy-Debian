@@ -16,10 +16,10 @@ cp background.jpg /home/$username/Pictures/background.jpg
 mv user-dirs.dirs /home/$username/.config
 chown -R $username:$username /home/$username
 
-# Installing Essential Programs 
-apt install feh bspwm betterlockscreen sxhkd kitty rofi polybar picom thunar lxpolkit x11-xserver-utils unzip wget curl build-essential pulseaudio pavucontrol -y
+# Installing Essential Programs
+apt install feh bspwm sxhkd kitty rofi polybar picom thunar lxpolkit x11-xserver-utils unzip wget curl pulseaudio -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc lxappearance papirus-icon-theme fonts-noto-color-emoji lightdm -y
+apt install neofetch flameshot psmisc lxappearance betterlockscreen pavucontrol papirus-icon-theme fonts-noto-color-emoji lightdm -y
 apt install autoconf imagemagick bc pkg-config libpam0g-dev libcairo2-dev libxss1 libappindicator1 libindicator7 libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev libgif-dev -y
 # Install Chrome browser
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
