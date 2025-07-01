@@ -1,5 +1,5 @@
 # Crazy-Debian
-crazycheetah42's Debian BSPWM customization, based on ChrisTitusTech's Debian-titus project
+crazycheetah42's Debian BSPWM customization, mostly based on ChrisTitusTech's Debian-titus project
  
 
 ```
